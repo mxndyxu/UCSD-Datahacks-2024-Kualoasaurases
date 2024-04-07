@@ -9,6 +9,9 @@ DinoDetector is an innovative web application that allows users to upload images
 - **Fossil Location Mapping**: Displays a global map pinpointing the locations of discovered fossils corresponding to the classified dinosaur.
 - **Educational Content**: Provides interesting facts and information about different dinosaur species.
 
+## Dataset
+-  **Dinosaur Image Dataset**: For training our model, we used a dinosaur image dataset available on [Kaggle] having 15 different species! (https://www.kaggle.com/datasets/larserikrisholm/dinosaur-image-dataset-15-species).
+
 ## Resources Used
 
 - **Transfer Learning with TensorFlow**: We used TensorFlow's guide on transfer learning to help train our model efficiently. Check it out [here](https://www.tensorflow.org/tutorials/images/transfer_learning).
