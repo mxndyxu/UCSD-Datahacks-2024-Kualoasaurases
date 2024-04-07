@@ -1,10 +1,11 @@
 # DinoDetector: Unearth the Past
 
-## Overview
-DinoDetector is an innovative web application that allows users to upload images of dinosaurs and receive instant classification results along with a map showcasing where fossils of the identified species have been found globally. Leveraging advanced deep learning algorithms, DinoDetector aims to educate and engage users in paleontology, making the ancient world of dinosaurs accessible to all.
+## Hey there, Dinosaur Enthusiasts!
 
-## Features
-- **Image Upload**: Users can easily upload images of dinosaurs to be classified.
-- **Dinosaur Classification**: Utilizes a state-of-the-art deep learning model to accurately identify dinosaur species.
-- **Fossil Location Mapping**: Displays a global map pinpointing the locations of discovered fossils corresponding to the classified dinosaur.
-- **Educational Content**: Provides interesting facts and information about different dinosaur species.
+Welcome to **DinoDetector**! Ever wondered what dinosaur is staring back at you from that fossil or picture? We've got you covered! Our web app lets you upload a dino pic, and boom – we tell you what it is and where its buddies were found around the globe. It's like a time machine, but cooler, because you learn loads about these magnificent creatures from the past.
+
+## What's on Offer?
+
+- **Snap & Classify**: Got a dinosaur picture? Upload it and let our tech do the rest.
+- **Travel Through Time**: Discover where on Earth these ancient beasts roamed.
+- **Dino Database**: Dive into our dino-lopedia for fascinating facts and trivia.
