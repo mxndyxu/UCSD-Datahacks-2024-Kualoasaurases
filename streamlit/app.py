@@ -48,7 +48,7 @@ def main():
     st.set_page_config(page_title='DinoDetector', page_icon='🦖')
 
     # Create page header and description
-    st.header('DinoDetector: Unearth the Past :t-rex:', divider='green')
+    st.header(':t-rex: DinoDetector: Unearth the Past', divider='green')
     st.markdown('Welcome to our project for the 2024 UCSD DataHacks competition created by Aritra Das, Asif Mahdin, Luke Taylor, and Mandy Xu! Our project classifies an image of a dinosaur using transfer learning from a pre-trained network and finetuned to our dinosaurs dataset. An interactive map is returned displaying the locations of where the classified dinosaur\'s fossils were found in the world.')
     st.markdown('To start, upload an image of a dinosaur. Once classified, explore the interactive map!')
 
