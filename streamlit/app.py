@@ -48,7 +48,7 @@ def main():
     st.set_page_config(page_title='DinoDetector', page_icon='🦖')
 
     # Create page header and description
-    st.header('DinoDetector: Unearth the Past :t-rex:', divider='green')
+    st.header(':t-rex: DinoDetector: Unearth the Past', divider='green')
     st.markdown('Welcome to our project for the 2024 UCSD DataHacks competition created by Aritra Das, Asif Mahdin, Luke Taylor, and Mandy Xu! Our project classifies an image of a dinosaur using transfer learning from a pre-trained network and finetuned to our dinosaurs dataset. An interactive map is returned displaying the locations of where the classified dinosaur\'s fossils were found in the world.')
     st.markdown('To start, upload an image of a dinosaur. Once classified, explore the interactive map!')
 
@@ -65,7 +65,7 @@ def main():
     # DATA_CENTER = (x, y) 37.398040135459446, -98.76306631230204
     m = folium.Map(location=(37.398, -98.763), zoom_start=3)# Map(location=DATA_CENTER, zoom_start=9)
 
-    st.header('Locations of Dinosaur Fossils Acrosss the World From our Image Dataset')
+    st.subheader('Locations of Dinosaur Fossils Across the World From our Image Dataset')
     #st.map(data=data, latitude='lat', longitude='lng', color='color') # zoom = None, use_contain_width= True 
     for i, row in data.iterrows():
         location = (row['lat'], row['lng'])
