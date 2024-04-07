@@ -61,12 +61,24 @@ def main():
     
     # data frame
     data = read_data()
+    st.header('Data Frame Preview')
+    st.dataframe(data.head())
 
-    # DATA_CENTER = (x, y) 37.398040135459446, -98.76306631230204
-    m = folium.Map(location=(37.398, -98.763), zoom_start=3)# Map(location=DATA_CENTER, zoom_start=9)
+    data_class_names = list(data['class_name'].unique())
 
-    st.header('Locations of Dinosaur Fossils Acrosss the World From our Image Dataset')
+    # take some input text right here
+    # select dinosaur input 
+    # TODO update default based on the model output!
+    dinosaur_input = st.multiselect('Select a Dinosaur:', tuple(data_class_names), default=data_class_names[0])
+    #st.write('You selected:', dinosaur_input)
+
+    data = data[data['class_name'].isin(dinosaur_input)]
+
+    m = folium.Map(location=(37.398, -98.763), zoom_start=3)
+
+    st.header('Locations of Dinosaur Fossils')
     #st.map(data=data, latitude='lat', longitude='lng', color='color') # zoom = None, use_contain_width= True 
+    st.write('Hover over to see general Dinosaur Name. Click to see the specific Dinosaur Name.')
     for i, row in data.iterrows():
         location = (row['lat'], row['lng'])
         folium.CircleMarker(location, popup=row['accepted_name'], tooltip=row['class_name'], radius=5, color=row['color'],
