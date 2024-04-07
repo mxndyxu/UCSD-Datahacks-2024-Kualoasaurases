@@ -1,7 +1,5 @@
 import streamlit as st
-import geopandas as gpd 
 import pandas as pd
-import csv 
 import pylab 
 import folium
 from streamlit_folium import st_folium 
@@ -9,6 +7,9 @@ import matplotlib
 
 
 def return_color_generator(NUM_COLORS, cmap='terrain'):
+    """
+    Generates color map for each dinosaur.
+    """
     cm = pylab.get_cmap(cmap)
     for i in range(NUM_COLORS):
         color = cm(1.*i/NUM_COLORS)  # color will now be an RGBA tuple
@@ -45,11 +46,11 @@ def read_data(data_loc='../data/filtered_dino_fossil_locations.csv'):
 
 def main():
     # Set page configuration
-    st.set_page_config(page_title='DinoDetector', page_icon='🦖')
+    st.set_page_config(page_title='DinoDetector', page_icon='🦖', layout='wide')
 
     # Create page header and description
     st.header(':t-rex: DinoDetector: Unearth the Past', divider='green')
-    st.markdown('Welcome to our project for the 2024 UCSD DataHacks competition created by Aritra Das, Asif Mahdin, Luke Taylor, and Mandy Xu! Our project classifies an image of a dinosaur using transfer learning from a pre-trained network and finetuned to our dinosaurs dataset. An interactive map is returned displaying the locations of where the classified dinosaur\'s fossils were found in the world.')
+    st.markdown('Welcome to our project for the 2024 UCSD DataHacks competition created by Aritra Das, Asif Mahdin, Luke Taylor, and Mandy Xu! Our project classifies an image of a dinosaur using transfer learning from a pre-trained network and finetuned to our dinosaurs dataset. An interactive map is displayed with the highlighted locations of where the classified dinosaur\'s fossils were found in the world.')
     st.markdown('To start, upload an image of a dinosaur. Once classified, explore the interactive map!')
 
     # File uploader for images
@@ -59,32 +60,25 @@ def main():
         # Display uploaded image
         st.image(uploaded_file, use_column_width=True)
     
-    # data frame
+    # Dataframe preview of fossil locations
     data = read_data()
-    st.header('Data Frame Preview')
+    st.subheader('Dataframe Preview')
     st.dataframe(data.head())
 
     data_class_names = list(data['class_name'].unique())
+    m = folium.Map(location=(40.841852219046864, 56.94639806488843), zoom_start=2) # map
 
-    # take some input text right here
-    # select dinosaur input 
-    # TODO update default based on the model output!
+    # Display map and filters
+    st.subheader('Locations of Dinosaur Fossils')
     dinosaur_input = st.multiselect('Select a Dinosaur:', tuple(data_class_names), default=data_class_names[0])
-    #st.write('You selected:', dinosaur_input)
-
     data = data[data['class_name'].isin(dinosaur_input)]
-
-    m = folium.Map(location=(37.398, -98.763), zoom_start=3)
-
-    st.header('Locations of Dinosaur Fossils')
-    #st.map(data=data, latitude='lat', longitude='lng', color='color') # zoom = None, use_contain_width= True 
-    st.write('Hover over to see general Dinosaur Name. Click to see the specific Dinosaur Name.')
+    st.write('Hover over to see general dinosaur names. Click to see the specific dinosaur name.')
     for i, row in data.iterrows():
         location = (row['lat'], row['lng'])
         folium.CircleMarker(location, popup=row['accepted_name'], tooltip=row['class_name'], radius=5, color=row['color'],
         fill_color=row['color']).add_to(m)
 
-    st_folium(m, width=700)
+    st_folium(m, width=1500)
     
 if __name__ == "__main__":
     main()
