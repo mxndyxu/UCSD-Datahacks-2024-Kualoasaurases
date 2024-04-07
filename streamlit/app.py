@@ -115,9 +115,13 @@ def main():
     data_class_names = list(data['class_name'].unique())
     m = folium.Map(location=(40.841852219046864, 56.94639806488843), zoom_start=2) # map
 
+    default_label = data_class_names[0]
+    if pred_class:
+        default_label = pred_class
+
     # Display map and filters
     st.subheader('Locations of Dinosaur Fossils')
-    dinosaur_input = st.multiselect('Select a Dinosaur:', tuple(data_class_names), default=data_class_names[0])
+    dinosaur_input = st.multiselect('Select a Dinosaur:', tuple(data_class_names), default=default_label)
     data = data[data['class_name'].isin(dinosaur_input)]
     st.write('Hover over to see general dinosaur names. Click to see the specific dinosaur name.')
     for i, row in data.iterrows():
