@@ -10,7 +10,7 @@ DinoDetector is an innovative web application that allows users to upload images
 - **Educational Content**: Provides interesting facts and information about different dinosaur species.
 
 ## Dataset
--  **Dinosaur Image Dataset**: For training our model, we used a dinosaur image dataset available on [Kaggle] having 15 different species! (https://www.kaggle.com/datasets/larserikrisholm/dinosaur-image-dataset-15-species).
+-  **Dinosaur Image Dataset**: For training our model, we used a dinosaur image dataset available on [Kaggle](https://www.kaggle.com/datasets/larserikrisholm/dinosaur-image-dataset-15-species) having 15 different species!.
 
 ## Resources Used
 
