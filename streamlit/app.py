@@ -95,6 +95,8 @@ def main():
     # File uploader for images
     uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
+    pred_class = None
+
     if uploaded_file is not None:
         # Display uploaded image
         st.image(uploaded_file, use_column_width=True)
@@ -118,6 +120,8 @@ def main():
     default_label = data_class_names[0]
     if pred_class:
         default_label = pred_class
+    else:
+        default_label = data_class_names[0]
 
     # Display map and filters
     st.subheader('Locations of Dinosaur Fossils')
