@@ -8,13 +8,14 @@ import tensorflow as tf
 import numpy as np
 import keras
 
+# Set page configuration at the very beginning
+st.set_page_config(page_title='DinoDetector', page_icon='🦖', layout='wide')
 
-# load model, set cache to prevent reloading
+# Load model, set cache to prevent reloading
 @st.cache_resource(show_spinner=True)
 def load_model():
-    model = keras.models.load_model("./models/dinosaur_classifier.keras")
+    model = keras.models.load_model("../models/dinosaur_classifier.keras")
     return model
-
 
 def load_image(image):
     img = tf.image.decode_jpeg(image, channels=3)
@@ -23,7 +24,6 @@ def load_image(image):
     img = tf.image.resize(img, (224, 224))
     img = tf.expand_dims(img, axis=0)
     return img
-
 
 def return_color_generator(NUM_COLORS, cmap='terrain'):
     """
@@ -41,7 +41,7 @@ def return_color_generator(NUM_COLORS, cmap='terrain'):
 # SOURCE: BugBytes from YouTube
 # caching data to avoid reloading data every time the page is refreshed with decorator
 @st.cache_data
-def read_data(data_loc='./data/filtered_dino_fossil_locations.csv'):
+def read_data(data_loc='../data/filtered_dino_fossil_locations.csv'):
     data = list()
 
     # data frame of dinosaur fossil locations across the world
@@ -64,9 +64,6 @@ def read_data(data_loc='./data/filtered_dino_fossil_locations.csv'):
     return dino_fossil_locations
 
 def main():
-    # Set page configuration
-    st.set_page_config(page_title='DinoDetector', page_icon='🦖', layout='wide')
-
     # Create page header and description
     st.header(':t-rex: DinoDetector: Unearth the Past', divider='green')
     st.markdown('Welcome to our project for the 2024 UCSD DataHacks competition created by Aritra Das, Asif Mahdin, Luke Taylor, and Mandy Xu! Our project classifies an image of a dinosaur using transfer learning from a pre-trained network and finetuned to our dinosaurs dataset. An interactive map is displayed with the highlighted locations of where the classified dinosaur\'s fossils were found in the world.')
